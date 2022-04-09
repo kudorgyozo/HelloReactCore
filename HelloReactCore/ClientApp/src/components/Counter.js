@@ -1,31 +1,26 @@
-import React, { Component } from 'react';
+import { counterState } from "../state/counter";
+import { useRecoilState } from "recoil";
 
-export class Counter extends Component {
-  static displayName = Counter.name;
+export const Counter = () => {
+  const [count, setCount] = useRecoilState(counterState);
 
-  constructor(props) {
-    super(props);
-    this.state = { currentCount: 0 };
-    this.incrementCounter = this.incrementCounter.bind(this);
-  }
+  const incrementCounter = () => {
+    setCount((prev) => prev + 1);
+  };
 
-  incrementCounter() {
-    this.setState({
-      currentCount: this.state.currentCount + 1
-    });
-  }
+  return (
+    <div>
+      <h1>Counter</h1>
 
-  render() {
-    return (
-      <div>
-        <h1>Counter</h1>
+      <p>This is a simple example of a React component.</p>
 
-        <p>This is a simple example of a React component.</p>
+      <p aria-live="polite">
+        Current count: <strong>{count}</strong>
+      </p>
 
-        <p aria-live="polite">Current count: <strong>{this.state.currentCount}</strong></p>
-
-        <button className="btn btn-primary" onClick={this.incrementCounter}>Increment</button>
-      </div>
-    );
-  }
-}
+      <button className="btn btn-primary" onClick={incrementCounter}>
+        Increment
+      </button>
+    </div>
+  );
+};

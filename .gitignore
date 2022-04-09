@@ -25,7 +25,6 @@ obj/
 Obj/
 
 # Visual Studio 2015 cache/options directory
-.vs/
 /wwwroot/dist/
 
 # MSTest test Results
@@ -230,3 +229,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+.vs/**
+**/.vscode/**
